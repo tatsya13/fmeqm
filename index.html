@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гибкие методологии в управлении качеством образования</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.15/index.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbff;
+            color: #2e1065;
+            overflow-x: hidden;
+        }
+
+        @keyframes shimmer-title {
+            0%, 100% {
+                text-shadow: 0 0 15px rgba(167, 139, 250, 0.3), 0 0 30px rgba(192, 132, 252, 0.1);
+            }
+            50% {
+                text-shadow: 0 0 25px rgba(167, 139, 250, 0.6), 0 0 50px rgba(192, 132, 252, 0.25);
+            }
+        }
+
+        @keyframes shimmer-border {
+            0%, 100% {
+                border-color: rgba(167, 139, 250, 0.3);
+                box-shadow: 0 4px 20px rgba(167, 139, 250, 0.08), inset 0 0 20px rgba(167, 139, 250, 0.02);
+            }
+            50% {
+                border-color: rgba(167, 139, 250, 0.6);
+                box-shadow: 0 8px 30px rgba(167, 139, 250, 0.15), inset 0 0 30px rgba(167, 139, 250, 0.04);
+            }
+        }
+
+        @keyframes shimmer-glow {
+            0%, 100% {
+                box-shadow: 0 10px 40px rgba(167, 139, 250, 0.1), 0 0 20px rgba(192, 132, 252, 0.05);
+            }
+            50% {
+                box-shadow: 0 15px 50px rgba(167, 139, 250, 0.2), 0 0 35px rgba(192, 132, 252, 0.1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        .animate-shimmer-title {
+            animation: shimmer-title 4s ease-in-out infinite;
+        }
+
+        .animate-shimmer-border {
+            animation: shimmer-border 4s ease-in-out infinite;
+        }
+
+        .animate-shimmer-glow {
+            animation: shimmer-glow 4s ease-in-out infinite;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-soft {
+            animation: pulse-soft 3s ease-in-out infinite;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(167, 139, 250, 0.15);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdfbff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(167, 139, 250, 0.4);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(167, 139, 250, 0.7);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#fdfbff]">
+        <!-- Subtle Diagram/Graph Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(167, 139, 250, 0.03)" stroke-width="1"/>
+                </pattern>
+                <pattern id="grid" width="200" height="200" patternUnits="userSpaceOnUse">
+                    <rect width="200" height="200" fill="url(#smallGrid)"/>
+                    <path d="M 200 0 L 0 0 0 200" fill="none" stroke="rgba(167, 139, 250, 0.05)" stroke-width="1"/>
+                </pattern>
+            </defs>
+            <rect width="1200" height="800" fill="url(#grid)" />
+            <polyline points="0,400 150,350 300,380 450,250 600,300 800,200 1000,280 1200,150" fill="none" stroke="rgba(139, 92, 246, 0.04)" stroke-width="2" />
+            <polyline points="0,500 200,450 400,480 600,350 800,400 1000,300 1200,350" fill="none" stroke="rgba(192, 132, 252, 0.04)" stroke-width="2" />
+            <rect x="100" y="500" width="30" height="80" fill="rgba(167, 139, 250, 0.03)" rx="4" />
+            <rect x="140" y="420" width="30" height="160" fill="rgba(167, 139, 250, 0.04)" rx="4" />
+            <rect x="180" y="540" width="30" height="40" fill="rgba(167, 139, 250, 0.03)" rx="4" />
+            <rect x="800" y="300" width="40" height="120" fill="rgba(192, 132, 252, 0.03)" rx="4" />
+            <rect x="850" y="200" width="40" height="220" fill="rgba(192, 132, 252, 0.04)" rx="4" />
+            <rect x="900" y="380" width="40" height="40" fill="rgba(192, 132, 252, 0.03)" rx="4" />
+            <circle cx="1050" cy="200" r="60" fill="none" stroke="rgba(167, 139, 250, 0.04)" stroke-width="2" />
+            <path d="M 1050 200 L 1050 140 A 60 60 0 0 1 1102 230 Z" fill="rgba(167, 139, 250, 0.04)" />
+        </svg>
+
+        <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-[#fdfbff]"></div>
+        
+        <div class="absolute top-20 left-10 w-2 h-2 bg-purple-400 rounded-full animate-pulse-soft"></div>
+        <div class="absolute top-40 right-20 w-3 h-3 bg-violet-400 rounded-full animate-pulse-soft" style="animation-delay: 0.5s;"></div>
+        <div class="absolute bottom-32 left-1/4 w-2 h-2 bg-fuchsia-400 rounded-full animate-pulse-soft" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-20 right-1/3 w-2 h-2 bg-purple-300 rounded-full animate-pulse-soft" style="animation-delay: 1.5s;"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
+            <div class="inline-block mb-6 px-4 py-2 rounded-full border border-purple-300 bg-white/50 animate-shimmer-border">
+                <span class="text-purple-700 text-sm font-medium tracking-wider uppercase">Образовательный интенсив</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight animate-shimmer-title">
+                <span class="text-gradient">ГИБКИЕ МЕТОДОЛОГИИ</span><br>
+                <span class="text-purple-900">В УПРАВЛЕНИИ КАЧЕСТВОМ</span><br>
+                <span class="text-gradient">ОБРАЗОВАНИЯ</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-purple-800/70 max-w-3xl mx-auto mb-12 animate-float">
+                Совершенствование образовательных программ через современные инструменты качества
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-6 mb-16">
+                <div class="glass-card rounded-2xl px-8 py-4 animate-shimmer-glow">
+                    <div class="text-purple-600 text-3xl font-bold">36</div>
+                    <div class="text-purple-500/70 text-sm">академических часов</div>
+                </div>
+                <div class="glass-card rounded-2xl px-8 py-4 animate-shimmer-glow" style="animation-delay: 0.3s;">
+                    <div class="text-violet-600 text-3xl font-bold">Смешанный</div>
+                    <div class="text-purple-500/70 text-sm">12 очно + 24 асинхронно</div>
+                </div>
+            </div>
+
+            <div class="animate-bounce">
+                <svg class="w-8 h-8 mx-auto text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Info Section -->
+    <section class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#fdfbff] via-[#f5f0ff] to-[#fdfbff]"></div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 scroll-reveal">
+                <span class="text-gradient">О программе</span>
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card rounded-3xl p-8 scroll-reveal animate-shimmer-border hover:scale-[1.02] transition-transform duration-500">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-100 to-violet-200 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-900 mb-2">Объём</h3>
+                            <p class="text-3xl font-bold text-purple-600 mb-1">36 а.ч.</p>
+                            <p class="text-purple-500/70 text-sm">Академических часов</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 scroll-reveal animate-shimmer-border hover:scale-[1.02] transition-transform duration-500" style="animation-delay: 0.2s;">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-100 to-fuchsia-200 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-violet-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-900 mb-2">Формат</h3>
+                            <p class="text-2xl font-bold text-violet-600 mb-1">Смешанный</p>
+                            <p class="text-purple-500/70 text-sm">12 а.ч. очно, 24 а.ч. асинхронно</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 scroll-reveal animate-shimmer-border hover:scale-[1.02] transition-transform duration-500" style="animation-delay: 0.4s;">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-fuchsia-100 to-purple-200 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-fuchsia-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-900 mb-2">Сроки обучения</h3>
+                            <p class="text-2xl font-bold text-fuchsia-600 mb-1">Октябрь–Ноябрь</p>
+                            <p class="text-purple-500/70 text-sm">2026 года</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience Section -->
+    <section class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#fdfbff] via-[#f8f2ff] to-[#fdfbff]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-200/20 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 scroll-reveal">
+                <span class="text-gradient">Для кого</span>
+            </h2>
+
+            <div class="glass-card rounded-3xl p-10 md:p-14 scroll-reveal animate-shimmer-glow relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-200/30 to-transparent rounded-bl-full"></div>
+                <div class="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-fuchsia-200/30 to-transparent rounded-tr-full"></div>
+                
+                <div class="relative z-10 flex items-start gap-6">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-400 to-fuchsia-500 flex items-center justify-center flex-shrink-0 animate-shimmer-glow">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-lg md:text-xl text-purple-900/90 leading-relaxed">
+                            Для специалистов сферы образования, которые занимаются разработкой или совершенствованием образовательных программ (продуктов).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Value Section -->
+    <section class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#fdfbff] via-[#f5f0ff] to-[#fdfbff]"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 scroll-reveal">
+                <span class="text-gradient">Ключевая ценность</span>
+            </h2>
+
+            <div class="glass-card rounded-3xl p-10 md:p-14 scroll-reveal animate-shimmer-glow relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200/30 to-transparent rounded-bl-full"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-fuchsia-200/30 to-transparent rounded-tr-full"></div>
+                
+                <p class="text-lg md:text-xl text-purple-900/90 leading-relaxed relative z-10">
+                    В рамках интенсива участники проходят основные этапы от 
+                    <span class="text-purple-700 font-semibold">анализа образовательного опыта обучающегося</span> 
+                    при помощи картирования, 
+                    <span class="text-violet-700 font-semibold">7 «простых» инструментов качества</span>, 
+                    <span class="text-fuchsia-700 font-semibold">диагностики потерь</span> 
+                    до 
+                    <span class="text-purple-700 font-semibold">совершенствования</span> 
+                    посредством использования гибких методов управления.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Structure Section -->
+    <section class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#fdfbff] via-[#fdfbff] to-[#f5f0ff]"></div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 scroll-reveal">
+                <span class="text-gradient">Структура программы</span>
+            </h2>
+
+            <div class="space-y-6">
+                <div class="glass-card rounded-2xl p-8 scroll-reveal animate-shimmer-border flex items-center gap-6 hover:scale-[1.01] transition-transform duration-500">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-200 to-violet-300 flex items-center justify-center flex-shrink-0 animate-shimmer-glow">
+                        <span class="text-2xl font-bold text-white">01</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-purple-900 mb-2">3 блока тем с лекционным материалом и практическими заданиями</h3>
+                        <p class="text-purple-500/70">Основные модули интенсива</p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 scroll-reveal animate-shimmer-border flex items-center gap-6 hover:scale-[1.01] transition-transform duration-500" style="animation-delay: 0.15s;">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-200 to-fuchsia-300 flex items-center justify-center flex-shrink-0 animate-shimmer-glow">
+                        <span class="text-2xl font-bold text-white">02</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-purple-900 mb-2">Открытая лекция</h3>
+                        <p class="text-purple-800">«Применение 7 инструментов управления качеством в исследовании образовательного опыта обучающихся»</p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 scroll-reveal animate-shimmer-border flex items-center gap-6 hover:scale-[1.01] transition-transform duration-500" style="animation-delay: 0.3s;">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-200 to-purple-300 flex items-center justify-center flex-shrink-0 animate-shimmer-glow">
+                        <span class="text-2xl font-bold text-white">03</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-purple-900 mb-2">Экскурсия на Фабрику процессов Политеха</h3>
+                        <p class="text-purple-500/70">Практическое погружение в процессы</p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 scroll-reveal animate-shimmer-border flex items-center gap-6 hover:scale-[1.01] transition-transform duration-500" style="animation-delay: 0.45s;">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-200 to-fuchsia-300 flex items-center justify-center flex-shrink-0 animate-shimmer-glow">
+                        <span class="text-2xl font-bold text-white">04</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-purple-900 mb-2">Экскурсия на производственное предприятие Lean</h3>
+                        <p class="text-purple-500/70">Изучение бережливого производства на практике</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Topics Section -->
+    <section class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#fdfbff] via-[#f8f2ff] to-[#fdfbff]"></div>
+        <div class="absolute top-1/3 right-0 w-[400px] h-[400px] bg-violet-200/15 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-fuchsia-200/15 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 scroll-reveal">
+                <span class="text-gradient">Перечень изучаемых тем</span>
+            </h2>
+
+            <div class="space-y-8">
+                <div class="glass-card rounded-3xl p-8 scroll-reveal animate-shimmer-border hover:scale-[1.01] transition-transform duration-500">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-100 to-violet-200 flex items-center justify-center flex-shrink-0 animate-shimmer-glow">
+                            <span class="text-2xl font-bold text-purple-700">1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-900 mb-3">Оценка качества образовательного процесса на основе анализа опыта обучающегося.</h3>
+                            <p class="text-purple-700 leading-relaxed">
+                                Продуктовый подход в образовании. Переход от процессного управления к управлению образовательным опытом (EX/CX в образовании). Методология Learning Journey Map (LJM). Применение 7 инструментов управления качеством в образовании.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 scroll-reveal animate-shimmer-border hover:scale-[1.01] transition-transform duration-500" style="animation-delay: 0.15s;">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-100 to-fuchsia-200 flex items-center justify-center flex-shrink-0 animate-shimmer-glow">
+                            <span class="text-2xl font-bold text-violet-700">2</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-900 mb-3">Реализация бережливых технологий в образовании.</h3>
+                            <p class="text-purple-700 leading-relaxed">
+                                Концепция Lean в сфере образования. Понятие ценности и потерь. 8 видов потерь в образовании. Методы бережливого производства в образовании. Визуализация потока создания ценности.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 scroll-reveal animate-shimmer-border hover:scale-[1.01] transition-transform duration-500" style="animation-delay: 0.3s;">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-fuchsia-100 to-purple-200 flex items-center justify-center flex-shrink-0 animate-shimmer-glow">
+                            <span class="text-2xl font-bold text-fuchsia-700">3</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-900 mb-3">Итеративное проектирование образовательных программ и продуктов.</h3>
+                            <p class="text-purple-700 leading-relaxed">
+                                Понятие педагогического дизайна. Модели педагогического дизайна в образовании. Гибкие методологии управления (Agile, Scrum и др.). Минимально жизнеспособный продукт (MVP).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#f5f0ff] via-[#fdfbff] to-[#fdfbff]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-fuchsia-200/20 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 scroll-reveal">
+                <span class="text-gradient">Результаты обучения</span>
+            </h2>
+
+            <div class="glass-card rounded-3xl p-8 md:p-12 scroll-reveal animate-shimmer-glow relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-100/40 via-transparent to-fuchsia-100/40"></div>
+                
+                <div class="relative z-10 space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-500 flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-purple-900 text-lg leading-relaxed">Составлять карту образовательного пути обучающегося, определять проблемные зоны и пути улучшения;</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-500 flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-purple-900 text-lg leading-relaxed">Выбирать инструмент управления качеством для сбора и анализа данных об образовательном процессе;</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-500 flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-purple-900 text-lg leading-relaxed">Диагностировать потери в образовательном процессе;</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-500 flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-purple-900 text-lg leading-relaxed">Адаптировать гибкие методы управления для совершенствования образовательного процесса (программы, продукта);</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-500 flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <p class="text-purple-900 text-lg leading-relaxed">Выбирать модель педагогического дизайна для создания образовательного продукта.</p>
+                    </div>
+                    
+                    <div class="mt-10 pt-8 border-t border-purple-200/50 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-fuchsia-500 flex items-center justify-center mb-4 animate-shimmer-glow">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-purple-900 mb-1">Сертификат участника</h3>
+                        <p class="text-purple-600">образовательного интенсива</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 relative border-t border-purple-200">
+        <div class="absolute inset-0 bg-[#fdfbff]"></div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+            <p class="text-purple-400 text-sm">
+                Образовательный интенсив «Гибкие методологии в управлении качеством образования»
+            </p>
+            <p class="text-purple-300 text-xs mt-2">
+                Октябрь–Ноябрь 2026 • 36 а.ч.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroSvg = document.querySelector('section:first-child svg');
+            if (heroSvg && scrolled < window.innerHeight) {
+                heroSvg.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
+
